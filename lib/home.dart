@@ -101,7 +101,7 @@ class HomePage extends StatelessWidget {
           },
         ),
         title: const Text('SHRINE'),
-        backgroundColor: Colors.lightBlue,
+        //backgroundColor: Colors.lightBlue,
         // TODO: Add trailing buttons (102)
         actions: <Widget>[
           IconButton(
