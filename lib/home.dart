@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
 
   // TODO: Make a collection of cards (102)
 
-
+  // Replace this entire method
   List<Card> _buildGridCards(BuildContext context) {
     List<Product> products = ProductsRepository.loadProducts(Category.all);
 
@@ -81,7 +81,6 @@ class HomePage extends StatelessWidget {
     }).toList();
   }
 
-  
   // TODO: Add a variable for Category (104)
   @override
   Widget build(BuildContext context) {
@@ -90,45 +89,48 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       // TODO: Add app bar (102)
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        // TODO: Add buttons and title (102)
         leading: IconButton(
-          onPressed: () {
-            
-          }, icon: const Icon(
+          icon: const Icon(
             Icons.menu,
             semanticLabel: 'menu',
           ),
+          onPressed: () {
+            // ignore: avoid_print
+            print('Menu button');
+          },
         ),
-          title: const Text('SHRINE'),
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(
-                Icons.search,
-                semanticLabel: 'search',
-
-              ),
-              onPressed: () {
-                print("Searh button");
-              },
+        title: const Text('SHRINE'),
+        backgroundColor: Colors.lightBlue,
+        // TODO: Add trailing buttons (102)
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.search,
+              semanticLabel: 'search',
             ),
-              IconButton(
-                icon: const Icon(
-                  Icons.tune,
-                  semanticLabel: 'filter',
-                ),
-                onPressed: () {
-                  print('Filter button');
-                  
-                },
-              )
-          ],
-
+            onPressed: () {
+              print('Search button');
+            },
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.tune,
+              semanticLabel: 'filter',
+            ),
+            onPressed: () {
+              print('Filter button');
+            },
+          ),
+        ],
       ),
       // TODO: Add a grid view (102)
-      body: Center(
-        child: Text('You did it!'),
-      ),
-      // TODO: Set resizeToAvoidBottomInset (101)
+      body: GridView.count(
+          crossAxisCount: 2,
+          padding: const EdgeInsets.all(16.0),
+          childAspectRatio: 8.0 / 9.0,
+          children: _buildGridCards(context) // Changed code
+          ),
     );
   }
 }
